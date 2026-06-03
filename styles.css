@@ -161,9 +161,119 @@ h1 {
   font-size: 0.95rem;
 }
 
-.hero-meta {
+.hero-meta,
+.hero-profile {
   display: grid;
   gap: 18px;
+}
+
+.hero-profile {
+  justify-self: end;
+  max-width: 380px;
+}
+
+.profile-photo {
+  width: 120px;
+  height: 120px;
+  border-radius: 28px;
+  margin-bottom: 14px;
+  object-fit: cover;
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.14), rgba(99, 102, 241, 0.14));
+  box-shadow: 0 18px 35px rgba(15, 23, 42, 0.08);
+}
+
+.cards-grid {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.cards-grid > * {
+  opacity: 0;
+  transform: translateY(18px);
+  animation: fadeUp 0.6s ease forwards;
+}
+
+.cards-grid > *:nth-child(1) { animation-delay: 0.05s; }
+.cards-grid > *:nth-child(2) { animation-delay: 0.1s; }
+.cards-grid > *:nth-child(3) { animation-delay: 0.15s; }
+.cards-grid > *:nth-child(4) { animation-delay: 0.2s; }
+.cards-grid > *:nth-child(5) { animation-delay: 0.25s; }
+.cards-grid > *:nth-child(6) { animation-delay: 0.3s; }
+.cards-grid > *:nth-child(7) { animation-delay: 0.35s; }
+.cards-grid > *:nth-child(8) { animation-delay: 0.4s; }
+
+.details-card {
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: 28px;
+  background: var(--surface-strong);
+  box-shadow: 0 20px 48px rgba(15, 23, 42, 0.06);
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+
+.details-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 30px 75px rgba(15, 23, 42, 0.1);
+}
+
+details {
+  display: grid;
+  gap: 14px;
+}
+
+details summary {
+  cursor: pointer;
+  list-style: none;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.details-card details p {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 220ms ease, max-height 220ms ease;
+}
+
+.details-card details[open] p {
+  opacity: 1;
+  max-height: 260px;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+details {
+  display: grid;
+  gap: 14px;
+}
+
+details summary {
+  cursor: pointer;
+  list-style: none;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+details summary::-webkit-details-marker {
+  display: none;
+}
+
+details[open] summary {
+  color: var(--accent);
+}
+
+details p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.8;
 }
 
 .hero-card,
