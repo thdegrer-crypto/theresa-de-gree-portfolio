@@ -242,6 +242,34 @@ details summary {
   max-height: 260px;
 }
 
+.school-image {
+  width: 100%;
+  height: auto;
+  max-height: 280px;
+  object-fit: cover;
+  border-radius: 18px;
+  margin-top: 16px;
+  display: block;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.12);
+}
+
+.school-images-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.school-images-row .school-image {
+  margin-top: 0;
+}
+
+@media (max-width: 640px) {
+  .school-images-row {
+    grid-template-columns: 1fr;
+  }
+}
+
 @keyframes fadeUp {
   to {
     opacity: 1;
