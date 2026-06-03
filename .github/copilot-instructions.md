@@ -1,0 +1,5 @@
+- Scaffold a static portfolio website for Theresa De Gree.
+- Use `index.html` and `styles.css` for the landing page.
+- Keep the layout simple, responsive, and easy to update.
+- Do not require Node.js or npm.
+- Include a README with open/run instructions.

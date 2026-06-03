@@ -1,0 +1,9 @@
+# Ignore macOS metadata
+.DS_Store
+
+# Ignore Python bytecode
+__pycache__/
+*.py[cod]
+
+# Ignore local IDE files
+.vscode/
