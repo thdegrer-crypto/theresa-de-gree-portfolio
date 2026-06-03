@@ -1,13 +1,13 @@
 :root {
   color-scheme: light;
-  --bg: #050505;
-  --surface: rgba(255, 255, 255, 0.05);
-  --surface-strong: rgba(255, 255, 255, 0.09);
-  --text: #f8f8f8;
-  --muted: #b0b0b8;
-  --accent: #7dd3fc;
-  --accent-soft: rgba(125, 211, 252, 0.15);
-  --border: rgba(255, 255, 255, 0.14);
+  --bg: #eef2f7;
+  --surface: rgba(255, 255, 255, 0.95);
+  --surface-strong: rgba(255, 255, 255, 1);
+  --text: #111827;
+  --muted: #4b5563;
+  --accent: #2563eb;
+  --accent-soft: rgba(37, 99, 235, 0.14);
+  --border: rgba(148, 163, 184, 0.25);
 }
 
 * {
@@ -19,8 +19,8 @@ body {
   margin: 0;
   min-height: 100%;
   font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  background: radial-gradient(circle at top, rgba(125, 211, 252, 0.12), transparent 32%),
-    radial-gradient(circle at 20% 20%, rgba(248, 146, 255, 0.1), transparent 25%),
+  background: radial-gradient(circle at top, rgba(37, 99, 235, 0.08), transparent 38%),
+    radial-gradient(circle at 80% 10%, rgba(59, 130, 246, 0.08), transparent 30%),
     var(--bg);
   color: var(--text);
 }
@@ -44,6 +44,36 @@ button {
   padding: 32px 0 64px;
 }
 
+.top-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  align-items: center;
+  justify-content: center;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  padding: 16px 0;
+  margin-bottom: 16px;
+  background: rgba(255, 255, 255, 0.92);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.35);
+  backdrop-filter: blur(12px);
+}
+
+.top-nav a {
+  color: var(--muted);
+  font-size: 0.9rem;
+  text-decoration: none;
+  padding: 10px 12px;
+  border-radius: 999px;
+  transition: background 160ms ease, color 160ms ease;
+}
+
+.top-nav a:hover {
+  background: rgba(37, 99, 235, 0.1);
+  color: var(--accent);
+}
+
 .hero {
   display: grid;
   gap: 28px;
@@ -52,8 +82,8 @@ button {
   padding: 42px 32px;
   border: 1px solid var(--border);
   border-radius: 32px;
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(12px);
+  background: var(--surface);
+  box-shadow: 0 35px 80px rgba(15, 23, 42, 0.08);
 }
 
 .hero-copy {
@@ -123,24 +153,37 @@ h1 {
 }
 
 .profile-tags span {
-  padding: 10px 14px;
-  border: 1px solid var(--border);
+  padding: 10px 16px;
+  border: 1px solid rgba(148, 163, 184, 0.45);
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.04);
+  background: #f8fafc;
   color: var(--text);
   font-size: 0.95rem;
 }
 
 .hero-meta {
   display: grid;
-  gap: 16px;
+  gap: 18px;
 }
 
-.hero-card {
+.hero-card,
+.timeline-card,
+.project-card,
+.skill-card {
   padding: 24px;
   border: 1px solid var(--border);
   border-radius: 28px;
-  background: var(--surface);
+  background: var(--surface-strong);
+  box-shadow: 0 20px 48px rgba(15, 23, 42, 0.06);
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+
+.hero-card:hover,
+.timeline-card:hover,
+.project-card:hover,
+.skill-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 30px 75px rgba(15, 23, 42, 0.1);
 }
 
 .card-title {
@@ -154,7 +197,7 @@ h1 {
 
 .card-copy {
   margin: 0;
-  color: var(--muted);
+  color: var(--text);
 }
 
 main {
@@ -170,25 +213,30 @@ main {
 
 .section-label {
   margin: 0;
-  color: var(--accent);
-  letter-spacing: 0.16em;
+  color: var(--muted);
+  letter-spacing: 0.24em;
   text-transform: uppercase;
-  font-size: 0.8rem;
+  font-size: 0.78rem;
 }
 
 .timeline-card,
 .skill-card {
   display: grid;
-  gap: 10px;
-  padding: 26px;
-  border-radius: 28px;
-  background: var(--surface);
+  gap: 14px;
+  padding: 24px;
+  border-radius: 30px;
+  background: var(--surface-strong);
   border: 1px solid var(--border);
 }
 
 .timeline-card {
-  grid-template-columns: 1fr max-content;
-  align-items: center;
+  grid-template-columns: minmax(0, 1fr) max-content;
+  align-items: start;
+}
+
+.timeline-card > div {
+  display: grid;
+  gap: 6px;
 }
 
 .timeline-title,
@@ -206,6 +254,7 @@ main {
 .timeline-date {
   color: var(--muted);
   white-space: nowrap;
+  font-size: 0.95rem;
 }
 
 .project-card {
@@ -217,9 +266,12 @@ main {
   border: 1px solid var(--border);
 }
 
-.project-copy {
+.project-copy,
+.card-copy,
+.skill-copy,
+.hero-description {
   margin: 0;
-  color: var(--text);
+  color: var(--muted);
 }
 
 .project-card a {
@@ -278,7 +330,7 @@ main {
   padding: 14px 18px;
   border: 1px solid var(--border);
   border-radius: 18px;
-  background: rgba(255, 255, 255, 0.04);
+  background: var(--surface);
   color: var(--text);
 }
 
@@ -303,6 +355,9 @@ main {
 
 @media (max-width: 900px) {
   .hero {
+    grid-template-columns: 1fr;
+  }
+  .cards-grid {
     grid-template-columns: 1fr;
   }
 }
